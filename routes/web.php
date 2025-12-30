@@ -6,6 +6,8 @@ use App\Http\Controllers\slideshowController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('home');
+Route::post('/submit-appointment', [WelcomeController::class, 'submitAppointment'])->name('appointments.store');
+Route::get('/appointments', [WelcomeController::class, 'appointments'])->name('appointments.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

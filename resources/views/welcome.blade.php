@@ -26,17 +26,19 @@
                     Dr. Kester Emamdee is a highly skilled professional with years of experience in delivering exceptional dental care.
                     Dedicated to patient satisfaction, Dr. Emamdee specializes in restorative dentistry and oral health education.
                 </p>
+                <div class="credential">
+                    <span class="badge">Registered Dentist — Dental Council of Trinidad and Tobago</span>
+                    <a href="https://dctt.org.tt/page/registrants?practicename=The%20Right%20Wisdom%20Ltd" target="_blank" rel="noopener">See official listing</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Ticker Tape of Reviews -->
+    <!-- Reviews & Verification Ticker -->
     <div class="ticker-tape">
         <div class="ticker-content">
-            <p>"Best dental care I've had in years!" - John Doe</p>
-            <p>"Excellent service, highly recommend!" - Jane Smith</p>
-            <p>"The staff was amazing, and the facility was top-notch." - Mike Johnson</p>
-            <p style="color: blue;"> "Replace with real reviews!" ~ Isa Abdul-Hamid</p>
+            <p>Registered Dentist — Dental Council of Trinidad and Tobago</p>
+            <p><a href="https://www.google.com/maps/search/The+Right+Wisdom+Dental+%26+Medical+1+Pine+Avenue+Munroe+Road+Cunupia" target="_blank" rel="noopener">Read reviews and leave feedback</a></p>
         </div>
     </div>
 
@@ -61,6 +63,7 @@
             @csrf
             <input type="text" name="name" placeholder="Your Name" required>
             <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number">
             <input type="date" name="date" required>
             <textarea name="message" placeholder="Additional Details"></textarea>
             <button type="submit">Submit Request</button>
@@ -69,8 +72,14 @@
     @endsection
 
     @section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        // Any page-specific JavaScript can go here
+        @if(session('status'))
+            Swal.fire({ icon: 'success', title: 'Success', text: '{{ session('status') }}' });
+        @endif
+        @if($errors->any())
+            Swal.fire({ icon: 'error', title: 'Error', text: '{{ implode("\n", $errors->all()) }}' });
+        @endif
     </script>
     @endsection
 
@@ -135,6 +144,11 @@
     .ticker-content p {
         display: inline;
         margin-right: 3rem;
+    }
+
+    .ticker-content a {
+        color: #fff;
+        text-decoration: underline;
     }
 
     @keyframes ticker {
@@ -451,7 +465,8 @@
     }
 
     #request-appointment input,
-    #request-appointment textarea {
+    #request-appointment textarea,
+    #request-appointment select {
         width: 80%;
         padding: 0.75rem;
         border: 1px solid #ddd;
@@ -600,6 +615,31 @@
         font-size: 1rem;
         color: #333;
         line-height: 1.5;
+    }
+
+    .credential {
+        margin-top: 0.5rem;
+        font-size: 0.95rem;
+        color: #4b5441;
+    }
+
+    .credential .badge {
+        display: inline-block;
+        background-color: #fdfef8;
+        border: 1px solid #4b5441;
+        border-radius: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+
+    .credential a {
+        color: #4b5441;
+        text-decoration: underline;
+    }
+
+    .credential a:hover {
+        color: #454739;
     }
 </style>
 
