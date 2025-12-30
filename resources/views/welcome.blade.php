@@ -30,30 +30,6 @@
         </div>
     </section>
 
-    <!-- Slideshow of Pictures (Placeholder for now) -->
-    <section id="slideshow">
-        <div class="container">
-            <h2>Our Work</h2>
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach($sliders as $key => $slider)
-                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <img src="{{ asset($slider->url) }}" class="d-block w-100" alt="{{ $slider->title }}">
-                    </div>
-                    @endforeach
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
-
     <!-- Ticker Tape of Reviews -->
     <div class="ticker-tape">
         <div class="ticker-content">
@@ -148,6 +124,7 @@
         white-space: nowrap;
         padding: 1rem 0;
         position: relative;
+        z-index: 50;
     }
 
     .ticker-content {
